@@ -44,9 +44,7 @@ src/Makefile.
 Files:
 ------
 
-endian.sh  Shell script to report "endian-ness" (see installation 
-   instructions). Not terribly robust; needs to be able to see gcc, 
-   for example.
+endian_test.cpp  C++ CLT to test endian-ness of machine it's compiled on
 
 doc/toolkit_documentation.html   The standard html documentation for the 
    toolkit. View using netscape or equivalent.
