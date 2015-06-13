@@ -1,5 +1,10 @@
-#C++ build files
+#C and C++ build files
 *.out
+*.o
+
+#Build output
+bin/
+lib/
 
 #VIM swap files
 *.swp
