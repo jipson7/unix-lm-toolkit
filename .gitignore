@@ -1,0 +1,9 @@
+#C++ build files
+*.out
+
+#VIM swap files
+*.swp
+
+#OSX Directory files
+.DS_Store
+
