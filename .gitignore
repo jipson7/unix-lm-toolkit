@@ -12,3 +12,5 @@ lib/
 #OSX Directory files
 .DS_Store
 
+#Folder for trial runs
+practice/
