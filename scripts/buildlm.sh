@@ -27,6 +27,8 @@ function buildDefaultLm() {
         -vocab intermediate-files/$outfilebody/$outfilebody$vocab \
         -binary ./$outfilebody$outfileext
 
+    rm -rf intermediate-files/$outfilebody/temp
+
 }
 
 
