@@ -41,8 +41,7 @@ given below).
 
 ####Installation:
 
-For "big-endian" machines (eg those running HP-UX, IRIX, SunOS,
-Solaris) the installation procedure is simply to type
+For "little-endian" machines the installation procedure is simply to type
 
   cd src
   make install
@@ -50,15 +49,15 @@ Solaris) the installation procedure is simply to type
 The executables will then be copied into the bin/ directory, and the
 library file SLM2.a will be copied into the lib/ directory.
 
-For "little-endian" machines (eg those running Ultrix, Linux) the
-variable "BYTESWAP_FLAG" will need to be set in the Makefile. This can
-be done by editing src/Makefile directly, so that the line
+For "big-endian" machines the variable "BYTESWAP_FLAG" will 
+need to be set in the Makefile. This can be done by editing 
+src/Makefile directly, so that the line
 
-#BYTESWAP_FLAG  = -DSLM_SWAP_BYTES
+BYTESWAP_FLAG  = -DSLM_SWAP_BYTES
 
 is changed to 
 
-BYTESWAP_FLAG  = -DSLM_SWAP_BYTES
+\#BYTESWAP_FLAG  = -DSLM_SWAP_BYTES
 
 Then the program can be installed as before.
 
@@ -69,8 +68,6 @@ In case of problems, then more information can be found by examining
 src/Makefile.
 
 Files:
-------
-
 
 doc/toolkit_documentation.html   The standard html documentation for the 
    toolkit. View using netscape or equivalent.
