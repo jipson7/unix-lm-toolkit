@@ -1,8 +1,36 @@
-CMU-Cambridge Statistical Language Modeling Tookit v2
-=====================================================
+#Language Modeling Scripts and Toolkit
 
-Documentation:
---------------
+Toolkit is a 'fork' of the CMU-Cambridge Statistical Language Modeling Tookit v2 available [here](http://www.speech.cs.cmu.edu/SLM_info.html)
+
+Additional scripts added by yours truly to facilitate some work with the toolkit and manipulation of the google corpus.
+
+#Documentation:
+
+##Scripts
+
+buildlm.sh - Shell script to build a binary LM from a text file, requires toolkit to be installed
+
+endian_test.cpp - C++ command line tool to test endian-ness of machine it's compiled on. Used to determine proper parameters for installation of toolkit below.
+
+ngram_spliiter.py - extracts a given year from an unzipped google ngram file.
+
+driver.py - used to run python scripts
+
+```
+
+python driver.py split <inputfile> <outputfile> <year-to-extract>
+
+```
+
+####TODO
+
+* Implement an algorithm to separate entire corpus by year
+* Implement a library to normalize raw text used to build lm
+* and more
+
+> Below is the documentation for the original CMU toolkit
+
+##Toolkit
 
 For installation and usage instructions for the toolkit, see 
 
@@ -11,8 +39,7 @@ doc/toolkit_documentation.html
 (for the sake of convenience, the installation instructions are also
 given below).
 
-Installation:
--------------
+####Installation:
 
 For "big-endian" machines (eg those running HP-UX, IRIX, SunOS,
 Solaris) the installation procedure is simply to type
@@ -44,7 +71,6 @@ src/Makefile.
 Files:
 ------
 
-endian_test.cpp  C++ CLT to test endian-ness of machine it's compiled on
 
 doc/toolkit_documentation.html   The standard html documentation for the 
    toolkit. View using netscape or equivalent.
