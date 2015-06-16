@@ -14,3 +14,6 @@ lib/
 
 #Folder for trial runs
 practice/
+
+#Python Stuff
+*.pyc
