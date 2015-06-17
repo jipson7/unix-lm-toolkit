@@ -9,7 +9,6 @@ Additional scripts added by yours truly to facilitate some work with the toolkit
 ##Scripts
 
 extract_year.sh - Takes a directory containing google ngram files (with gz compression), extracts them, extracts a specified year, and places the processed files in a user specified folder. 
-Note: Defalt behaviour is to delete gz files after processing, to save space. Use the --keep-originals flag to change this behaviour.
 
 buildlm.sh - Shell script to build a binary LM from a text file, requires toolkit to be installed
 
