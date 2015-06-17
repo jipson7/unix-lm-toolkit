@@ -2,10 +2,6 @@
 *.out
 *.o
 
-#Build output
-bin/
-lib/
-
 #VIM swap files
 *.swp
 
