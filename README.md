@@ -8,13 +8,14 @@ Additional scripts added by yours truly to facilitate some work with the toolkit
 
 ##Scripts
 
-extract_year.sh - Takes a directory containing google ngram files (with gz compression), extracts them, extracts a specified year, and places the processed files in a user specified folder. 
+extract_year.sh - Takes in a directory containing google ngram gz files (currently only works with5 grams) and a given year, and outputs a file containing only the ngrams of that given year. The resulting file is a merge of all previously separate gz files. Uses the line_extractor.py script.
+
+line_extractor.py - python script that takes in a pipe from the above script. And outputs only the (formatted) lines if they contain the specified year.
 
 buildlm.sh - Shell script to build a binary LM from a text file, requires toolkit to be installed
 
 endian_test.cpp - C++ command line tool to test endian-ness of machine it's compiled on. Used to determine proper parameters for installation of toolkit below.
 
-ngram_spliiter.py - extracts a given year from an unzipped google ngram file.
 
 ```
 
