@@ -19,9 +19,8 @@ function execute(){
 
     for f in $ngram_dir/*.gz; do
         STEM=$(basename "${f}" .gz)
-        unzippedfile=$output_dir/"${STEM}"
-        gunzip -c "${f}" > $unzippedfile
-        python driver.py split $unzippedfile $unzippedfile$dash$year $year
+		yearext="-$year"
+		zcat < $f | python ngram_splitter.py $output_dir/$STEM$yearext $year
         if [ $keep_true -eq 0 ]; then
             rm $f
         fi
