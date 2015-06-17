@@ -17,8 +17,6 @@ endian_test.cpp - C++ command line tool to test endian-ness of machine it's comp
 
 ngram_spliiter.py - extracts a given year from an unzipped google ngram file.
 
-driver.py - used to run python scripts
-
 ```
 
 python driver.py split <inputfile> <outputfile> <year-to-extract>
