@@ -18,6 +18,7 @@ function execute(){
     dash="-"
 
     for f in $ngram_dir/*.gz; do
+        echo "Processing $f..."
         STEM=$(basename "${f}" .gz)
 		yearext="-$year"
 		zcat < $f | python ngram_splitter.py $output_dir/$STEM$yearext $year
