@@ -29,10 +29,11 @@ class Extractor:
         return (line.split()[-3] == str(self.year))
 
     def strip_data(self, line):
-        """Removes last 2 columns of google n-gram data
-        as it is unneeded for building LM"""
-        #return ((line.strip()).rsplit(' ', 2)[0] + '\n')
-        return (' '.join(line.split()[:-3]) + '\n')
+        """Removes the year label and number
+        of books label. Keeps the ngram and the count"""
+        line_items = line.split()
+        clean_data = line_items[:-3] + [line_items[-2]]
+        return (' '.join(clean_data)  + '\n')
 
 def throw_help():
     print("Invalid arguments\n \
