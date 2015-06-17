@@ -15,17 +15,30 @@ function displayHelp(){
 function execute(){
     mkdir -p $output_dir
 
-    dash="-"
+    finalfile="google-lm-$year"
+
+    if [ -f $finalfile ]; then
+        echo "Cannot merge files. $finalfile already exists"
+    fi
+
+    touch $output_dir/$finalfile
+
 
     for f in $ngram_dir/*.gz; do
-        echo "Processing $f..."
+        echo "Processing $f ..."
         STEM=$(basename "${f}" .gz)
 		yearext="-$year"
 		zcat < $f | python ngram_splitter.py $output_dir/$STEM$yearext $year
         if [ $keep_true -eq 0 ]; then
             rm $f
         fi
+
+        echo "Merging $STEM$yearext ..."
+
+        cat $output_dir/$STEM$yearext >> $output_dir/$finalfile
     done
+
+    
 
 }
 
@@ -43,7 +56,7 @@ if [ ! -d "$ngram_dir" ]; then
     displayHelp
 fi
 
-if (( $year > 2008 )) && (( $year < 1500 )); then
+if (( $year > 2008 )) || (( $year < 1500 )); then
     displayHelp
 fi
 
