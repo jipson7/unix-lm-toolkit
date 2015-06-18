@@ -12,6 +12,8 @@ extract_year.sh - Takes in a directory containing google ngram gz files (current
 
 line_extractor.py - python script that takes in a pipe from the above script. And outputs only the (formatted) lines if they contain the specified year.
 
+create_vocab.py - Python script that takes an extracted year and creates a vocabulary file. (A set of all unique words)
+
 buildlm.sh - Shell script to build a binary LM from a text file, requires toolkit to be installed
 
 endian_test.cpp - C++ command line tool to test endian-ness of machine it's compiled on. Used to determine proper parameters for installation of toolkit below.
