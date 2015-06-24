@@ -8,7 +8,7 @@ def strip_data(line):
     of books column. Keeps the ngram and the count"""
     line_items = line.split()
     clean_data = line_items[:-3] + [line_items[-2]]
-    return (' '.join(clean_data))
+    return ((' '.join(clean_data)).strip())
 
 def extract(year):
     for line in sys.stdin:
