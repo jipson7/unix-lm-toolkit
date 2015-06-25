@@ -3,7 +3,7 @@
 function displayHelp() {
     echo "Invalid input arguments"
     echo "usage:"
-    echo "       ./buildlm.sh -i <someinput.txt> -o <someoutput.binlm>"
+    echo "       ./buildlm_from_txt.sh -i <someinput.txt> -o <someoutput.binlm>"
     echo ""
     exit 0
 }
