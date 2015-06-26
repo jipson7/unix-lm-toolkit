@@ -3,7 +3,7 @@
 function displayHelp() {
     echo "Invalid input arguments"
     echo "usage:"
-    echo "       ./buildlm_from_wngram.sh <someinput.w5gram> <output-dir>"
+    echo "       ./buildlm_from_wngram.sh <Input-w5gram-dir> <output-bin-dir>"
     echo ""
     echo "       It is suggested to use an empty output directory..."
     echo ""
@@ -13,27 +13,31 @@ function displayHelp() {
 function buildDefaultLm() {
     tempdir="$outdir/temp"
     mkdir -p $tempdir
+
     vocabext=".vocab"
     idgramext=".idgram"
-    vocabfile=$outdir/$infileroot$vocabext
-    idgramfile=$outdir/$infileroot$idgramext
     binext=".binlm"
-    binfile=$outdir/$infileroot$binext
-    echo "######## Creating Vocab File ########"
-	touch $vocabfile
-    python create_vocab.py $infile | sort -T $tempdir >> $vocabfile
-    echo "######## Creating IDGram File ########"
-    wngram2idngram -vocab $vocabfile -temp $tempdir -n 5 < $infile > $idgramfile
-    echo "######## Creating Language Model ########"
-    idngram2lm -idngram $idgramfile -vocab $vocabfile -bin_input -n 5 -binary $binfile
+
+    for f in $indir/*.w5gram; do
+        echo "Processing $f ..."
+        mainfile="${f##*/}"
+        rootname="${mainfile%.*}"
+        binfile=$outdir/$rootname$binext
+        vocabfile=$tempdir/$rootname$vocabext
+        idgramfile=$tempdir/$rootname$idgramext
+        python create_vocab.py $f | sort --dictionary-order >> $vocabfile
+        wngram2idngram -vocab $vocabfile -temp $tempdir -n 5 < $f > $idgramfile
+        idngram2lm -idngram $idgramfile -vocab $vocabfile -bin_input -n 5 -binary $binfile
+    done
+
     echo "All done!"
 
 }
 
 
 function checkIfFilesExist(){
-    if [ ! -f "$infile" ]; then
-        echo "Input file does not exist, exiting..."
+    if [ ! -d "$indir" ]; then
+        echo "Input directory does not exist, exiting..."
         exit 0
     fi
 
@@ -57,7 +61,7 @@ if [ -z "$1" ] || [ -z "$2" ]; then
 fi
 
 dot="."
-infile=$1
+indir=$1
 outdir=$2
 
 tempfile="${infile##*/}"
