@@ -20,7 +20,7 @@ function buildDefaultLm() {
     binext=".binlm"
     binfile=$outdir/$infileroot$binext
     echo "######## Creating Vocab File ########"
-    python create_vocab.py $infile | LC_ALL=C sort -T $tempdir --dictionary-order -o $vocabfile
+    python create_vocab.py $infile | sort -T $tempdir --dictionary-order -o $vocabfile
     echo "######## Creating IDGram File ########"
     wngram2idngram -vocab $vocabfile -temp $tempdir -n 5 < $infile > $idgramfile
     echo "######## Creating Language Model ########"
