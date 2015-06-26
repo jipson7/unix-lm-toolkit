@@ -20,7 +20,7 @@ def strip_data(line):
 
 def extract(year):
     for line in sys.stdin:
-        if year_in_line(line, year) and line_is_printable(line):
+        if year_in_line(line, year):
             print(strip_data(line))
   
 
