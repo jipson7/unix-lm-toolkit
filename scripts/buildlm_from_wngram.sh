@@ -25,7 +25,7 @@ function buildDefaultLm() {
         binfile=$outdir/$rootname$binext
         vocabfile=$tempdir/$rootname$vocabext
         idgramfile=$tempdir/$rootname$idgramext
-        python create_vocab.py $f | sort --dictionary-order >> $vocabfile
+        python create_vocab.py $f | LC_ALL=POSIX sort >> $vocabfile
         wngram2idngram -vocab $vocabfile -temp $tempdir -n 5 < $f > $idgramfile
         idngram2lm -idngram $idgramfile -vocab $vocabfile -bin_input -n 5 -binary $binfile
     done
