@@ -5,8 +5,8 @@ def year_in_line(line, year):
 
 def line_is_printable(line):
     try:
-        line.encode('ascii')
-    except UnicodeEncodeError:
+        line.decode('ascii')
+    except UnicodeDecodeError:
         return False
     else:
         return True

@@ -15,12 +15,13 @@ function buildDefaultLm() {
     mkdir -p $tempdir
     vocabext=".vocab"
     idgramext=".idgram"
-    vocabfile=$tempdir/$infileroot$vocabext
-    idgramfile=$tempdir/$infileroot$idgramext
+    vocabfile=$outdir/$infileroot$vocabext
+    idgramfile=$outdir/$infileroot$idgramext
     binext=".binlm"
     binfile=$outdir/$infileroot$binext
     echo "######## Creating Vocab File ########"
-    python create_vocab.py $infile | sort -T $tempdir --dictionary-order -o $vocabfile
+	touch $vocabfile
+    python create_vocab.py $infile | sort -T $tempdir >> $vocabfile
     echo "######## Creating IDGram File ########"
     wngram2idngram -vocab $vocabfile -temp $tempdir -n 5 < $infile > $idgramfile
     echo "######## Creating Language Model ########"

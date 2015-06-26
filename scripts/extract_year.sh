@@ -16,7 +16,7 @@ function execute(){
     touch $output_file
     for f in $ngram_dir/*.gz; do
         echo "Processing $f ..."
-        zcat < $f | python line_extract.py $year | sort -T $tempdir --dictionary-order -o $output_file
+        zcat < $f | python line_extract.py $year | sort -T $tempdir >> $output_file
     done
 
 }
