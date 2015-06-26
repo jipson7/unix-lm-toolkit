@@ -3,6 +3,14 @@ import sys
 def year_in_line(line, year):
     return (line.split()[-3] == str(year))
 
+def line_is_printable(line):
+    try:
+        line.encode('ascii')
+    except UnicodeEncodeError:
+        return False
+    else:
+        return True
+
 def strip_data(line):
     """Removes the year column and number
     of books column. Keeps the ngram and the count"""
@@ -12,7 +20,7 @@ def strip_data(line):
 
 def extract(year):
     for line in sys.stdin:
-        if year_in_line(line, year):
+        if year_in_line(line, year) and line_is_printable(line):
             print(strip_data(line))
   
 

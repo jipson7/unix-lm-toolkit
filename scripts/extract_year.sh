@@ -7,6 +7,7 @@ function displayHelp(){
     echo ""
     echo "<input-dir>           : Directory containing zipped google gz files"
     echo "<output-file>         : File to output google-year ngram to"
+    echo "<temp_dir>            : Self explanatory"
     echo "<year>                : year to extract from google ngrams"
     exit 0
 }
