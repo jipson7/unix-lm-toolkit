@@ -17,7 +17,7 @@ function execute(){
 		mainfile="${f##*/}"
 		rootname="${mainfile%.*}"
 		wext=".w5gram"
-        zcat < $f | python line_extract.py $year | sort --dictionary-order >> $outputdir/$rootname$wext
+        zcat < $f | python line_extract.py $year | sort >> $outputdir/$rootname$wext
     done
 
 }
