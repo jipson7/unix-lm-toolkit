@@ -12,7 +12,6 @@ function displayHelp(){
 }
 
 function execute(){
-    LC_ALL=C
     touch $output_file
     for f in $ngram_dir/*.gz; do
         echo "Processing $f ..."

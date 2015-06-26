@@ -19,8 +19,11 @@ function buildDefaultLm() {
     idgramfile=$tempdir/$infileroot$idgramext
     binext=".binlm"
     binfile=$outdir/$infileroot$binext
-    python create_vocab.py $infile $vocabfile
+    echo "######## Creating Vocab File ########"
+    python create_vocab.py $infile | LC_ALL=C sort -T $tempdir --dictionary-order -o $vocabfile
+    echo "######## Creating IDGram File ########"
     wngram2idngram -vocab $vocabfile -temp $tempdir -n 5 < $infile > $idgramfile
+    echo "######## Creating Language Model ########"
     idngram2lm -idngram $idgramfile -vocab $vocabfile -bin_input -n 5 -binary $binfile
     echo "All done!"
 
