@@ -24,7 +24,7 @@ function buildDefaultLm() {
     echo "######## Creating IDGram File ########"
     wngram2idngram -vocab $vocabfile -temp $tempdir -n 5 < $infile > $idgramfile
     echo "######## Creating Language Model ########"
-    idngram2lm -idngram $idgramfile -vocab $vocabfile -bin_input -n 5 -binary $binfile
+    idngram2lm -idngram $idgramfile -vocab $vocabfile -four_byte_counts -bin_input -n 5 -binary $binfile
     echo "All done!"
 
 }
