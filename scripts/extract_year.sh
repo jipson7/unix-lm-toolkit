@@ -14,10 +14,7 @@ function displayHelp(){
 function execute(){
     for f in $ngram_dir/*.gz; do
         echo "Processing $f ..."
-		mainfile="${f##*/}"
-		rootname="${mainfile%.*}"
-		wext=".w5gram"
-        zcat < $f | python line_extract.py $year | LC_ALL=POSIX sort >> $outputdir/$rootname$wext
+        zcat < $f | python line_extract.py $year | LC_ALL=POSIX sort -T $tempdir >> $output_file
     done
 
 }

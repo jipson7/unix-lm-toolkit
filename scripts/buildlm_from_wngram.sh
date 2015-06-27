@@ -17,19 +17,14 @@ function buildDefaultLm() {
     vocabext=".vocab"
     idgramext=".idgram"
     binext=".binlm"
-
-    for f in $indir/*.w5gram; do
-        echo "Processing $f ..."
-        mainfile="${f##*/}"
-        rootname="${mainfile%.*}"
-        binfile=$outdir/$rootname$binext
-        vocabfile=$tempdir/$rootname$vocabext
-        idgramfile=$tempdir/$rootname$idgramext
-        python create_vocab.py $f | LC_ALL=POSIX sort >> $vocabfile
-        wngram2idngram -vocab $vocabfile -temp $tempdir -n 5 < $f > $idgramfile
-        idngram2lm -idngram $idgramfile -vocab $vocabfile -bin_input -n 5 -binary $binfile
-    done
-
+    binfile=$outdir/$infileroot$binext
+    echo "######## Creating Vocab File ########"
+    touch $vocabfile
+    python create_vocab.py $infile | LC_ALL=POSIX sort -T $tempdir >> $vocabfile
+    echo "######## Creating IDGram File ########"
+    wngram2idngram -vocab $vocabfile -temp $tempdir -n 5 < $infile > $idgramfile
+    echo "######## Creating Language Model ########"
+    idngram2lm -idngram $idgramfile -vocab $vocabfile -bin_input -n 5 -binary $binfile
     echo "All done!"
 
 }
