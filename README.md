@@ -8,13 +8,40 @@ Additional scripts added by yours truly to facilitate some work with the toolkit
 
 ##Scripts
 
-extract_year.sh - Takes in a directory containing google ngram gz files (currently only works with5 grams) and a given year, and outputs a file containing only the ngrams of that given year. The resulting file is a merge of all previously separate gz files. Uses the line_extractor.py script.
+extract_year.sh - Takes a directory containing all, or a subset of, the google 5grams, and extracts a w5gram file of only a specific year. Usage is:
 
-line_extractor.py - python script that takes in a pipe from the above script. And outputs only the (formatted) lines if they contain the specified year.
+```
+./extract_year.sh <input-dir> <output-file> <temp_dir> <year>
 
-create_vocab.py - Python script that takes an extracted year and creates a vocabulary file. (A set of all unique words)
+```
+    
+* <input-dir>           : Directory containing zipped google gz files
+* <output-file>         : File to output google-year ngram to, i.e. the w5gram file
+* <temp_dir>            : Self explanatory, just make sure wherever it is has a few gb's of space
+* <year>                : year to extract from google ngrams
 
-buildlm.sh - Shell script to build a binary LM from a text file, requires toolkit to be installed
+
+line_extractor.py - python script that takes in a pipe from the above script. And outputs only the (formatted) lines if they contain the specified year. Not meant to be used directly, only by the above script.
+
+buildlm_from_w5gram.sh - Shell script to build a Binary LM from the w5gram created by the extract_year.sh script above. Usage is:
+
+```
+buildlm_from_wngram.sh <someinput.w5gram> <output-dir>
+
+```
+
+It is suggested that the output directory be empty as there is a pretty good chance something will get over written
+
+create_vocab.py - Python script that takes an extracted year and creates a vocabulary file. Not meant to be used directly but by the buildlm_from_wngram.sh script above.
+
+buildlm_from_text.sh - Shell script to build a binary LM from a text file using the toolset. Usage is:
+
+```
+./buildlm_from_txt.sh -i <someinput.txt> -o <someoutput.binlm> 
+
+```
+
+Don't ask about the goofy IO flags on this one. Not sure why I did that. Ill change it eventually.
 
 endian_test.cpp - C++ command line tool to test endian-ness of machine it's compiled on. Used to determine proper parameters for installation of toolkit below.
 
