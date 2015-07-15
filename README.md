@@ -15,10 +15,10 @@ extract_year.sh - Takes a directory containing all, or a subset of, the google 5
 
 ```
     
-* <input-dir>           : Directory containing zipped google gz files
-* <output-file>         : File to output google-year ngram to, i.e. the w5gram file
-* <temp_dir>            : Self explanatory, just make sure wherever it is has a few gb's of space
-* <year>                : year to extract from google ngrams
+* input-dir          : Directory containing zipped google gz files
+* output-file        : File to output google-year ngram to, i.e. the w5gram file
+* temp_dir           : Self explanatory, just make sure wherever it is has a few gb's of space
+* year               : year to extract from google ngrams
 
 
 line_extractor.py - python script that takes in a pipe from the above script. And outputs only the (formatted) lines if they contain the specified year. Not meant to be used directly, only by the above script.
