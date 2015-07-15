@@ -11,7 +11,7 @@ Additional scripts added by yours truly to facilitate some work with the toolkit
 extract_year.sh - Takes a directory containing all, or a subset of, the google 5grams, and extracts a w5gram file of only a specific year. Usage is:
 
 ```
-./extract_year.sh <input-dir> <output-file> <temp_dir> <year>
+./extract_year_to_w5gram.sh <input-dir> <output-file> <temp_dir> <year>
 
 ```
     
