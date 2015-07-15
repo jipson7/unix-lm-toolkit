@@ -54,7 +54,6 @@ python driver.py split <inputfile> <outputfile> <year-to-extract>
 
 ####TODO
 
-* Implement an algorithm to separate entire corpus by year
 * Implement a library to normalize raw text used to build lm
 * and more
 
